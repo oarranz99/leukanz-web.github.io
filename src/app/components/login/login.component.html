@@ -1,0 +1,36 @@
+<div class="modal-login-register">
+    <div class="form">
+        <div class="close-modal"><a (click) = "closeModal()">X</a></div>
+        <form class="register-form" [hidden]="isLoginOpened" [formGroup]="registerForm" (ngSubmit) = "doRegister()">
+            <label class="form-type">Registro</label>
+            <input type="text"  placeholder="name" formControlName ="userName" />
+            <small class="text-danger" *ngIf="registerForm.hasError('nameInvalid')" > El usuario debe tener al menos 4 letras</small>
+            <input type="text" placeholder="email address" formControlName ="mail"/>
+            <small class="text-danger" *ngIf="registerForm.hasError('mailInvalid')" > Introduce un email valido</small>
+            <div class="password input-group">
+                <input type="{{typePswd}}" placeholder="password" formControlName ="password" /><img class="eye" (mousedown)="showPswd()" (mouseup)="hidePswd()" src="assets/img/eye.png">
+            </div>
+            
+            <small *ngIf="registerForm.hasError('pswdInvalid')" class="text-danger" > La contraseña debe tener mínimo 8 caracteres</small>
+         
+            <button type="submit">create</button>
+            <p class="message">Already registered? <a  (click) = "open()">Sign In</a></p>
+
+        </form>
+        <form class="login-form" [hidden]="!isLoginOpened" [formGroup]="loginForm" (ngSubmit) = "doLogin()" >
+            <label class="form-type">Iniciar sesión</label>
+            <input type="text" placeholder="mail"  formControlName ="mail" />
+            <div class="password input-group">
+                <input type="{{typePswd}}" placeholder="password" formControlName ="password" /><img class="eye" (mousedown)="showPswd()" (mouseup)="hidePswd()" src="assets/img/eye.png">
+            </div>
+            <div *ngIf="loginForm.hasError('loginInvalid')" >
+            <small class="text-danger" > Las credenciales no coinciden</small>
+            </div>
+            <div>
+                <label class="remember"><input type="checkbox" [(ngModel)]="remember"/> Recordarme</label>
+            </div>
+            <button type="submit">login</button>
+            <p class="message">Don't have an account? <a  (click) = "close()">Register</a></p>
+        </form>
+    </div>
+</div>
