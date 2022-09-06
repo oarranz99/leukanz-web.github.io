@@ -10,11 +10,11 @@ export class ProductsService {
   constructor(private http: HttpClient) { }
 
   public getAllIlustrations(): Observable <any>{
-    const url = "http://localhost:8080/api/products/getIlustrations";
+    const url = "http://localhost:8080/api/productos/getIlustraciones";
     return this.http.get(url);
   }
   public getAllImages(): Observable <any>{
-    const url = "http://localhost:8080/api/products/getImages";
+    const url = "http://localhost:8080/api/productos/getImages";
     return this.http.get(url);
   }
   public addProduct(prod:RegisterModule): Observable <any>{
@@ -24,7 +24,7 @@ export class ProductsService {
     return this.http.post(url, body,{'headers':headers})
   }
   public getFotos(): Observable <any>{
-    const url = "http://localhost:8080/api/products/getFotografias";
+    const url = "http://localhost:8080/api/productos/getFotografias";
     return this.http.get(url);
   }
 }
